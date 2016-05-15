@@ -24,7 +24,7 @@
         android:textSize="@dimen/mirror_clock_text_size" />
 
     <TextView
-        android:id="@+id/weather"
+        android:id="@+id/weather_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/SmartMirrorText"
