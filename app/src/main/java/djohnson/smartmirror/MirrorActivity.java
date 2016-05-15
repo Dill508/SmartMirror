@@ -5,9 +5,12 @@ import android.os.Build;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.johnhiott.darkskyandroidlib.ForecastApi;
 
 import djohnson.smartmirror.modules.Date;
 
@@ -38,6 +41,14 @@ public class MirrorActivity extends AppCompatActivity {
 
             updateMirrorInfo();
         }
+
+        int forecastAPIKey = getResources().getIdentifier("forecastio_api_key", "string", getPackageName());
+        ForecastApi.create(getString(forecastAPIKey));
+//        ForecastConfiguration configuration =
+//                new ForecastConfiguration.Builder(getString(forecastAPIKey))
+//                        .setCacheDirectory(getCacheDir())
+//                        .build();
+//        ForecastClient.create(configuration);
     }
 
     @Override
@@ -48,5 +59,7 @@ public class MirrorActivity extends AppCompatActivity {
 
     private void updateMirrorInfo() {
         currentDate.setText(Date.getDate());
+
+
     }
 }
