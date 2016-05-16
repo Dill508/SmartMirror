@@ -2,6 +2,7 @@ package djohnson.smartmirror;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
-//import android.zetterstrom.com.forecast.ForecastClient;
-//import android.zetterstrom.com.forecast.ForecastConfiguration;
 
 import com.johnhiott.darkskyandroidlib.ForecastApi;
 
@@ -21,6 +20,7 @@ public class MirrorActivity extends AppCompatActivity {
 
     private TextView currentDate;
     private TextView currentWeather;
+    private TextView highlowTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class MirrorActivity extends AppCompatActivity {
 
             currentDate = (TextView) findViewById(R.id.date_text);
             currentWeather = (TextView) findViewById(R.id.weather_text);
+            highlowTemp = (TextView) findViewById(R.id.highlowtemp_text);
 
             int forecastAPIKey = getResources().getIdentifier("forecastio_api_key", "string", getPackageName());
             ForecastApi.create(getString(forecastAPIKey));
@@ -59,8 +60,20 @@ public class MirrorActivity extends AppCompatActivity {
     }
 
     private void updateMirrorInfo() {
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                currentDate.setText(Date.getDate());
+//                ForecastIO forecast = new ForecastIO();
+//                forecast.getCurrentWeather(currentWeather);
+//                highlowTemp.setText("Today: 73° /  53°");
+//            }
+//        }, 5000);
         currentDate.setText(Date.getDate());
-        currentWeather.setText(ForecastIO.getCurrentWeather());
+        ForecastIO forecast = new ForecastIO();
+        forecast.getCurrentWeather(currentWeather);
+        highlowTemp.setText("Today: 73° /  53°");
 
     }
 }

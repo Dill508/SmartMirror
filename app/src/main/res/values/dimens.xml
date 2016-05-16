@@ -5,6 +5,7 @@
     <dimen name="item_margin">20dp</dimen>
     <dimen name="mirror_item_spacing">40dp</dimen>
     <dimen name="mirror_text_size">50sp</dimen>
+    <dimen name="highlowtemp_text_size">40sp</dimen>
     <dimen name="mirror_clock_text_size">100sp</dimen>
     <dimen name="config_text_size">20sp</dimen>
     <dimen name="config_description_size">14sp</dimen>

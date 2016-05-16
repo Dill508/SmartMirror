@@ -1,6 +1,7 @@
 package djohnson.smartmirror.modules;
 
 import android.util.Log;
+import android.widget.TextView;
 //import android.zetterstrom.com.forecast.ForecastClient;
 //import android.zetterstrom.com.forecast.ForecastConfiguration;
 //import android.zetterstrom.com.forecast.ForecastClient;
@@ -20,14 +21,10 @@ import retrofit.client.Response;
  */
 public class ForecastIO {
 
-    private static final String TAG = "ForecastIO class:";
+    private static final String TAG = "ForecastIO class";
 
-
-    public static String getCurrentWeather() {
-        final String currentWeather = "asdf";
-
+    public void getCurrentWeather(final TextView currentWeather) {
         RequestBuilder weather = new RequestBuilder();
-
         Request request = new Request();
         request.setLat("32.00");
         request.setLng("-81.00");
@@ -43,16 +40,16 @@ public class ForecastIO {
                 Log.d(TAG, "Summary: " + weatherResponse.getCurrently().getSummary());
                 Log.d(TAG, "Hourly Sum: " + weatherResponse.getHourly().getSummary());
 
+                String currentTemp = String.valueOf((int)(float)Math.round(weatherResponse.getCurrently().getTemperature()));
+                String displayedCurrentWeather = currentTemp + "° " + weatherResponse.getCurrently().getSummary();
+                currentWeather.setText(displayedCurrentWeather);
             }
-
             @Override
             public void failure(RetrofitError retrofitError) {
                 Log.d(TAG, "Error while calling: " + retrofitError.getUrl());
                 Log.d(TAG, retrofitError.toString());
             }
         });
-
-        return currentWeather;
     }
 
 }
