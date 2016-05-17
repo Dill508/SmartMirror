@@ -2,10 +2,6 @@ package djohnson.smartmirror.modules;
 
 import android.util.Log;
 import android.widget.TextView;
-//import android.zetterstrom.com.forecast.ForecastClient;
-//import android.zetterstrom.com.forecast.ForecastConfiguration;
-//import android.zetterstrom.com.forecast.ForecastClient;
-//import android.zetterstrom.com.forecast.models.Forecast;
 
 import com.johnhiott.darkskyandroidlib.RequestBuilder;
 import com.johnhiott.darkskyandroidlib.models.Request;
@@ -26,19 +22,19 @@ public class ForecastIO {
     public void getCurrentWeather(final TextView currentWeather) {
         RequestBuilder weather = new RequestBuilder();
         Request request = new Request();
-        request.setLat("32.00");
-        request.setLng("-81.00");
+        request.setLat("41.533");
+        request.setLng("-90.655");
         request.setUnits(Request.Units.US);
         request.setLanguage(Request.Language.ENGLISH);
-        request.addExcludeBlock(Request.Block.CURRENTLY);
-        request.removeExcludeBlock(Request.Block.CURRENTLY);
+        //request.addExcludeBlock(Request.Block.CURRENTLY);
+        //request.removeExcludeBlock(Request.Block.CURRENTLY);
 
         weather.getWeather(request, new Callback<WeatherResponse>() {
             @Override
             public void success(WeatherResponse weatherResponse, Response response) {
-                Log.d(TAG, "Temp: " + weatherResponse.getCurrently().getTemperature());
-                Log.d(TAG, "Summary: " + weatherResponse.getCurrently().getSummary());
-                Log.d(TAG, "Hourly Sum: " + weatherResponse.getHourly().getSummary());
+//              Log.d(TAG, "Temp: " + weatherResponse.getCurrently().getTemperature());
+//              Log.d(TAG, "Summary: " + weatherResponse.getCurrently().getSummary());
+//              Log.d(TAG, "Hourly Sum: " + weatherResponse.getHourly().getSummary());
 
                 String currentTemp = String.valueOf((int)(float)Math.round(weatherResponse.getCurrently().getTemperature()));
                 String displayedCurrentWeather = currentTemp + "° " + weatherResponse.getCurrently().getSummary();

@@ -12,12 +12,14 @@ import java.util.Locale;
  *
  */
 public class Date {
-    public static Spanned getDate() {
+    public static String getDate() {
         SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.US);
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.US);
         SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.US);
         Calendar now = Calendar.getInstance();
         //int dayOfMonth = now.get(Calendar.DAY_OF_MONTH);
-        return Html.fromHtml(monthFormat.format(now.getTime()) + " " + dayFormat.format(now.getTime()) + ", " + yearFormat.format(now.getTime()));
+        String date = monthFormat.format(now.getTime()) + " " + dayFormat.format(now.getTime()) + ", " + yearFormat.format(now.getTime());
+        return date;
+        //return Html.fromHtml(monthFormat.format(now.getTime()) + " " + dayFormat.format(now.getTime()) + ", " + yearFormat.format(now.getTime()));
     }
 }
