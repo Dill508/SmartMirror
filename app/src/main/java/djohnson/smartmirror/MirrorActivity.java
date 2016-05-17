@@ -72,8 +72,7 @@ public class MirrorActivity extends AppCompatActivity {
 //        }, 5000);
         currentDate.setText(Date.getDate());
         ForecastIO forecast = new ForecastIO();
-        forecast.getCurrentWeather(currentWeather);
-        highlowTemp.setText("Today: 73° /  53°");
+        forecast.getCurrentWeather(currentWeather, highlowTemp);
 
     }
 }

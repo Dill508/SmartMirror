@@ -19,7 +19,7 @@ public class ForecastIO {
 
     private static final String TAG = "ForecastIO class";
 
-    public void getCurrentWeather(final TextView currentWeather) {
+    public void getCurrentWeather(final TextView currentWeather, final TextView highlowtemp) {
         RequestBuilder weather = new RequestBuilder();
         Request request = new Request();
         request.setLat("41.533");
@@ -32,13 +32,19 @@ public class ForecastIO {
         weather.getWeather(request, new Callback<WeatherResponse>() {
             @Override
             public void success(WeatherResponse weatherResponse, Response response) {
-//              Log.d(TAG, "Temp: " + weatherResponse.getCurrently().getTemperature());
-//              Log.d(TAG, "Summary: " + weatherResponse.getCurrently().getSummary());
-//              Log.d(TAG, "Hourly Sum: " + weatherResponse.getHourly().getSummary());
+//                Log.d(TAG, "data0: " + weatherResponse.getDaily().getData().get(1).getTemperatureMax());
+                Log.d(TAG, "data0: " + weatherResponse.getDaily().getData().get(0).getPrecipProbability());
 
+                //setting current weather (temperature and summary)
                 String currentTemp = String.valueOf((int)(float)Math.round(weatherResponse.getCurrently().getTemperature()));
                 String displayedCurrentWeather = currentTemp + "° " + weatherResponse.getCurrently().getSummary();
                 currentWeather.setText(displayedCurrentWeather);
+
+                //setting today's high/low temperatures
+                String highTemp = String.valueOf((int)(float)Math.round(weatherResponse.getDaily().getData().get(0).getTemperatureMax()));
+                String lowTemp = String.valueOf((int)(float)Math.round(weatherResponse.getDaily().getData().get(0).getTemperatureMin()));
+                String displayedhighlowtemp = "Today: " + highTemp + "° /  " + lowTemp + "° ";
+                highlowtemp.setText(displayedhighlowtemp);
             }
             @Override
             public void failure(RetrofitError retrofitError) {
