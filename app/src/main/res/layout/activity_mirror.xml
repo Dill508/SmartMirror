@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -57,5 +58,24 @@
         tools:text="Today: 75° /  25°"
         android:textSize="@dimen/highlowtemp_text_size" />
 
+    <TextView
+        android:id="@+id/todayforecast_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/SmartMirrorText"
+        android:paddingTop="5dp"
+        tools:text="Light rain in the afternoon."
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:textSize="@dimen/highlowtemp_text_size"
+
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit ="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true" />
+
 
 </LinearLayout>
+

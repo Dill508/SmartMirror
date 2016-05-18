@@ -19,7 +19,7 @@ public class ForecastIO {
 
     private static final String TAG = "ForecastIO class";
 
-    public void getCurrentWeather(final TextView currentWeather, final TextView highlowtemp, final TextView feelsliketemp) {
+    public void getCurrentWeather(final TextView currentWeather, final TextView highlowtemp, final TextView feelsliketemp, final TextView todaysforecast) {
         RequestBuilder weather = new RequestBuilder();
         Request request = new Request();
         request.setLat("41.533");
@@ -32,8 +32,7 @@ public class ForecastIO {
         weather.getWeather(request, new Callback<WeatherResponse>() {
             @Override
             public void success(WeatherResponse weatherResponse, Response response) {
-//                Log.d(TAG, "data0: " + weatherResponse.getDaily().getData().get(1).getTemperatureMax());
-                Log.d(TAG, "data0: " + weatherResponse.getDaily().getData().get(0).getPrecipProbability());
+                //Log.d(TAG, "data0: " + weatherResponse.getDaily().getData().get(0).getPrecipProbability());
 
                 //setting current weather (temperature and summary)
                 String currentTemp = String.valueOf((int)(float)Math.round(weatherResponse.getCurrently().getTemperature()));
@@ -50,6 +49,12 @@ public class ForecastIO {
                 String feelslike = String.valueOf((int)(float)Math.round(weatherResponse.getCurrently().getApparentTemperature()));
                 String displayedfeelsliketemp = "Feels Like: " + feelslike + "° ";
                 feelsliketemp.setText(displayedfeelsliketemp);
+
+                //setting today's forecast
+                String daysforecast = weatherResponse.getHourly().getSummary();
+                //String daysforecast = weatherResponse.getDaily().getData().get(0).getSummary();
+                //String displayeddaysforecast = daysforecast;
+                todaysforecast.setText(daysforecast);
             }
             @Override
             public void failure(RetrofitError retrofitError) {

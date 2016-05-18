@@ -24,6 +24,7 @@ public class MirrorActivity extends AppCompatActivity {
     private TextView currentWeather;
     private TextView highlowTemp;
     private TextView feelslikeTemp;
+    private TextView todayForecast;
     private ImageView weatherRadar;
 
     @Override
@@ -51,6 +52,7 @@ public class MirrorActivity extends AppCompatActivity {
             highlowTemp = (TextView) findViewById(R.id.highlowtemp_text);
             feelslikeTemp = (TextView) findViewById(R.id.feelslike_text);
             weatherRadar = (ImageView) findViewById(R.id.weather_radar);
+            todayForecast = (TextView) findViewById(R.id.todayforecast_text);
 
             int forecastAPIKey = getResources().getIdentifier("forecastio_api_key", "string", getPackageName());
             ForecastApi.create(getString(forecastAPIKey));
@@ -68,23 +70,21 @@ public class MirrorActivity extends AppCompatActivity {
     private void updateMirrorInfo() {
         currentDate.setText(Date.getDate());
         ForecastIO forecast = new ForecastIO();
-        forecast.getCurrentWeather(currentWeather, highlowTemp, feelslikeTemp);
-        WeatherRadar radar = new WeatherRadar();
-        //radar.getWeatherRadar(weatherRadar);
+        forecast.getCurrentWeather(currentWeather, highlowTemp, feelslikeTemp, todayForecast);
 
-//        while(true) {
+
+
 //            Handler handler = new Handler();
 //            handler.postDelayed(new Runnable() {
 //                @Override
 //                public void run() {
 //                    currentDate.setText(Date.getDate());
 //                    ForecastIO forecast = new ForecastIO();
-//                    forecast.getCurrentWeather(currentWeather, highlowTemp);
-//                    WeatherRadar radar = new WeatherRadar();
-//                    radar.getWeatherRadar(weatherRadar);
+//                    forecast.getCurrentWeather(currentWeather, highlowTemp, feelslikeTemp, todayForecast);
+//                    //WeatherRadar radar = new WeatherRadar();
+//                    //radar.getWeatherRadar(weatherRadar);
 //                }
-//            }, 300000);
-//        }
+//            }, 5000);
 
     }
 }
