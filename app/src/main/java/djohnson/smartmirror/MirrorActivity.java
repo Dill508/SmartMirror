@@ -3,7 +3,6 @@ package djohnson.smartmirror;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.johnhiott.darkskyandroidlib.ForecastApi;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import djohnson.smartmirror.modules.Date;
 import djohnson.smartmirror.modules.ForecastIO;
@@ -26,6 +28,9 @@ public class MirrorActivity extends AppCompatActivity {
     private TextView feelslikeTemp;
     private TextView todayForecast;
     private ImageView weatherRadar;
+
+    private Timer timer = new Timer();
+    private TimerTask timerTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +73,26 @@ public class MirrorActivity extends AppCompatActivity {
     }
 
     private void updateMirrorInfo() {
-        currentDate.setText(Date.getDate());
-        ForecastIO forecast = new ForecastIO();
-        forecast.getCurrentWeather(currentWeather, highlowTemp, feelslikeTemp, todayForecast);
+//        currentDate.setText(Date.getDate());
+//        ForecastIO forecast = new ForecastIO();
+//        forecast.getCurrentWeather(currentWeather, highlowTemp, feelslikeTemp, todayForecast);
+
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        currentDate.setText(Date.getDate());
+                        ForecastIO forecast = new ForecastIO();
+                        forecast.getCurrentWeather(currentWeather, highlowTemp, feelslikeTemp, todayForecast);
+                    }
+                });
+
+            }
+        };
+        timer.schedule(timerTask, 0, 5 * 60 * 1000);
+
 
 
 

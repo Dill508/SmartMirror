@@ -32,7 +32,7 @@ public class ForecastIO {
         weather.getWeather(request, new Callback<WeatherResponse>() {
             @Override
             public void success(WeatherResponse weatherResponse, Response response) {
-                //Log.d(TAG, "data0: " + weatherResponse.getDaily().getData().get(0).getPrecipProbability());
+                Log.d(TAG, "data0: " + weatherResponse.getDaily().getData().get(0).getTemperatureMaxTime());
 
                 //setting current weather (temperature and summary)
                 String currentTemp = String.valueOf((int)(float)Math.round(weatherResponse.getCurrently().getTemperature()));
