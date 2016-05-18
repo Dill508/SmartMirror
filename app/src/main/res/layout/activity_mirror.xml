@@ -32,12 +32,30 @@
         tools:text="75° Partly Cloudy"/>
 
     <TextView
+        android:id="@+id/feelslike_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SmartMirrorText"
+        android:paddingTop="5dp"
+        android:includeFontPadding="false"
+        android:textSize="@dimen/highlowtemp_text_size"
+        tools:text="Feels Like: 75°"/>
+
+    <ImageView
+        android:id="@+id/weather_radar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"/>
+
+    <TextView
         android:id="@+id/highlowtemp_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/SmartMirrorText"
+        android:paddingTop="5dp"
         android:includeFontPadding="false"
-        tools:text="Today: 75° /  55°"
+        tools:text="Today: 75° /  25°"
         android:textSize="@dimen/highlowtemp_text_size" />
+
 
 </LinearLayout>

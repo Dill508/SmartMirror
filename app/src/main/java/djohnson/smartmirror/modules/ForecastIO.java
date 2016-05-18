@@ -19,7 +19,7 @@ public class ForecastIO {
 
     private static final String TAG = "ForecastIO class";
 
-    public void getCurrentWeather(final TextView currentWeather, final TextView highlowtemp) {
+    public void getCurrentWeather(final TextView currentWeather, final TextView highlowtemp, final TextView feelsliketemp) {
         RequestBuilder weather = new RequestBuilder();
         Request request = new Request();
         request.setLat("41.533");
@@ -45,6 +45,11 @@ public class ForecastIO {
                 String lowTemp = String.valueOf((int)(float)Math.round(weatherResponse.getDaily().getData().get(0).getTemperatureMin()));
                 String displayedhighlowtemp = "Today: " + highTemp + "° /  " + lowTemp + "° ";
                 highlowtemp.setText(displayedhighlowtemp);
+
+                //setting current feels like temperature
+                String feelslike = String.valueOf((int)(float)Math.round(weatherResponse.getCurrently().getApparentTemperature()));
+                String displayedfeelsliketemp = "Feels Like: " + feelslike + "° ";
+                feelsliketemp.setText(displayedfeelsliketemp);
             }
             @Override
             public void failure(RetrofitError retrofitError) {
