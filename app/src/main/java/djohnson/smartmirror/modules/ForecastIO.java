@@ -19,12 +19,20 @@ public class ForecastIO {
 
     private static final String TAG = "ForecastIO class";
 
-    public void getCurrentWeather(final TextView currentWeather, final TextView highlowtemp, final TextView feelsliketemp, final TextView todaysforecast) {
+    public void getCurrentWeather(String lat, String lon, String units, final TextView currentWeather, final TextView highlowtemp, final TextView feelsliketemp, final TextView todaysforecast) {
         RequestBuilder weather = new RequestBuilder();
         Request request = new Request();
-        request.setLat("41.533");
-        request.setLng("-90.655");
-        request.setUnits(Request.Units.US);
+//        request.setLat("41.533");
+//        request.setLng("-90.655");
+//        request.setUnits(Request.Units.US);
+        request.setLat(lat);
+        request.setLng(lon);
+        if (units.equals("SI")) {
+            request.setUnits(Request.Units.SI);
+        } else {
+            request.setUnits(Request.Units.US);
+        }
+        //request.setUnits(Request.Units.US);
         request.setLanguage(Request.Language.ENGLISH);
         //request.addExcludeBlock(Request.Block.CURRENTLY);
         //request.removeExcludeBlock(Request.Block.CURRENTLY);
@@ -32,7 +40,7 @@ public class ForecastIO {
         weather.getWeather(request, new Callback<WeatherResponse>() {
             @Override
             public void success(WeatherResponse weatherResponse, Response response) {
-                Log.d(TAG, "data0: " + weatherResponse.getDaily().getData().get(0).getTemperatureMaxTime());
+                //Log.d(TAG, "data0: " + weatherResponse.getDaily().getData().get(0).getTemperatureMaxTime());
 
                 //setting current weather (temperature and summary)
                 String currentTemp = String.valueOf((int)(float)Math.round(weatherResponse.getCurrently().getTemperature()));
