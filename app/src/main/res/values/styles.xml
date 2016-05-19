@@ -18,4 +18,40 @@
         <item name="android:drawablePadding">8dp</item>
     </style>
 
+    <style name="SettingsTitleText">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-condensed</item>
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:textSize">@dimen/settings_title_text_size</item>
+        <item name="android:paddingBottom">15dp</item>
+    </style>
+
+    <style name="SettingsLabelText">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-condensed</item>
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:textSize">@dimen/settings_label_text_size</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="SettingsItemText">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif</item>
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:textSize">@dimen/settings_item_text_size</item>
+        <item name="android:drawablePadding">6dp</item>
+    </style>
+
+    <style name="SettingsDescriptionText">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif</item>
+        <item name="android:textSize">@dimen/settings_description_size</item>
+    </style>
+
+    <style name="SettingsEditText" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:textSize">@dimen/settings_item_text_size</item>
+    </style>
+
+    <style name="SettingsAlertText">
+        <item name="android:color">@color/colorAlert</item>
+        <item name="android:textSize">@dimen/settings_item_text_size</item>
+        <item name="android:drawablePadding">1dp</item>
+    </style>
+
 </resources>

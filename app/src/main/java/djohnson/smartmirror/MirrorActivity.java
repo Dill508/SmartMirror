@@ -3,6 +3,7 @@ package djohnson.smartmirror;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,11 +17,15 @@ import com.johnhiott.darkskyandroidlib.ForecastApi;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import djohnson.smartmirror.modules.Configuration;
 import djohnson.smartmirror.modules.Date;
 import djohnson.smartmirror.modules.ForecastIO;
 import djohnson.smartmirror.modules.WeatherRadar;
 
 public class MirrorActivity extends AppCompatActivity {
+
+    @NonNull
+    private Configuration configSettings;
 
     private TextView currentDate;
     private TextView currentWeather;
@@ -36,6 +41,7 @@ public class MirrorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mirror);
+        configSettings = new Configuration(this);
 
         //Sets to fullscreen and removes notification and action bar
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
@@ -107,4 +113,13 @@ public class MirrorActivity extends AppCompatActivity {
 //            }, 5000);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //AlarmReceiver.stopMirrorUpdates(this);
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
 }

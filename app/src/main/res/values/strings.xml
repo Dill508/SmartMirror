@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SmartMirror</string>
+    <string name="settings">Settings</string>
+    <string name="how_to_stop">To return to Settings screen, swipe up from bottom of launched mirror, and press Back.</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="launch">Launch</string>
+    <string name="location">Location</string>
+    <string name="location_found">Location Found</string>
 </resources>

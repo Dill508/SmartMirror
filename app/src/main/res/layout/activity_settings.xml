@@ -1,0 +1,129 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin"
+        tools:context=".ConfigurationActivity">
+
+        <TextView
+            style="@style/SettingsTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings" />
+
+        <TextView
+            style="@style/SettingsLabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperature:" />
+
+        <RadioGroup
+            android:id="@+id/temperature_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/item_margin"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/celsius"
+                style="@style/SettingsItemText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Celsius" />
+
+            <RadioButton
+                android:id="@+id/farenheit"
+                style="@style/SettingsItemText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/item_margin"
+                android:layout_marginTop="0dp"
+                android:text="Farenheit" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/location_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/location_alert"
+                style="@style/SettingsAlertText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:text="Location permissions must be granted to this App" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/location_title"
+                    style="@style/SettingsLabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location" />
+
+                <TextView
+                    style="@style/SettingsItemText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/location_title"
+                    android:layout_marginStart="@dimen/item_margin"
+                    android:layout_toEndOf="@id/location_title"
+                    android:text="Couldn't detect a recent location" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/latitude"
+                    style="@style/SettingsEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/item_margin"
+                    android:layout_weight="1"
+                    android:hint="@string/latitude"
+                    android:inputType="numberDecimal|numberSigned" />
+
+                <EditText
+                    android:id="@+id/longitude"
+                    style="@style/SettingsEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/longitude"
+                    android:inputType="numberDecimal|numberSigned" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/launch_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/item_margin"
+            android:text="@string/launch"
+            android:textSize="@dimen/settings_label_text_size" />
+
+        <TextView
+            style="@style/SettingsDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_margin"
+            android:text="@string/how_to_stop" />
+    </LinearLayout>
+</ScrollView>
