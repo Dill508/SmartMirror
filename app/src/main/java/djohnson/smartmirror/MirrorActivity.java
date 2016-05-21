@@ -114,6 +114,7 @@ public class MirrorActivity extends AppCompatActivity {
         };
         timer.schedule(timerTask, 0, 5 * 60 * 1000);
 
+
 //            Handler handler = new Handler();
 //            handler.postDelayed(new Runnable() {
 //                @Override
