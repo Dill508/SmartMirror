@@ -85,6 +85,7 @@ public class MirrorActivity extends AppCompatActivity {
     }
 
     private void updateMirrorInfo() {
+
 //        currentDate.setText(Date.getDate());
 //        ForecastIO forecast = new ForecastIO();
 //        forecast.getCurrentWeather(configSettings.getLatitude(), configSettings.getLongitude(), configSettings.getForecastUnits(), currentWeather, highlowTemp, feelslikeTemp, todayForecast);
