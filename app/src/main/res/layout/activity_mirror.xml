@@ -59,6 +59,7 @@
             android:adjustViewBounds="true"
             android:layout_gravity="end"
             />
+
         <ImageView
             android:id="@+id/weather_radar"
             android:layout_width="wrap_content"
@@ -69,6 +70,7 @@
             android:maxHeight="500dp"
             android:paddingTop="5dp"
             android:layout_gravity="end"/>
+
     </FrameLayout>
 
     <!--<ImageView-->
