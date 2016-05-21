@@ -2,7 +2,6 @@ package djohnson.smartmirror;
 
 import android.content.Intent;
 import android.os.Build;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +19,8 @@ import java.util.TimerTask;
 import djohnson.smartmirror.modules.Configuration;
 import djohnson.smartmirror.modules.Date;
 import djohnson.smartmirror.modules.ForecastIO;
-import djohnson.smartmirror.modules.WeatherRadar;
+import djohnson.smartmirror.modules.MapsBackground;
+import djohnson.smartmirror.modules.WeatherUndergroundRadar;
 
 public class MirrorActivity extends AppCompatActivity {
 
@@ -33,7 +33,10 @@ public class MirrorActivity extends AppCompatActivity {
     private TextView feelslikeTemp;
     private TextView todayForecast;
     private ImageView weatherRadar;
+    private ImageView googleMap;
 
+    private String weatherundergroundAPIKEY;
+    private String googlemapsAPIKEY;
     private Timer timer = new Timer();
     private TimerTask timerTask;
 
@@ -64,10 +67,13 @@ public class MirrorActivity extends AppCompatActivity {
             feelslikeTemp = (TextView) findViewById(R.id.feelslike_text);
             weatherRadar = (ImageView) findViewById(R.id.weather_radar);
             todayForecast = (TextView) findViewById(R.id.todayforecast_text);
+            googleMap = (ImageView) findViewById(R.id.map);
 
             int forecastAPIKey = getResources().getIdentifier("forecastio_api_key", "string", getPackageName());
             ForecastApi.create(getString(forecastAPIKey));
 
+            weatherundergroundAPIKEY = getString(getResources().getIdentifier("weatherunderground_api_key", "string", getPackageName()));
+            googlemapsAPIKEY = getString(getResources().getIdentifier("googlemaps_static_api_key", "string", getPackageName()));
             updateMirrorInfo();
         }
     }
@@ -81,7 +87,11 @@ public class MirrorActivity extends AppCompatActivity {
     private void updateMirrorInfo() {
 //        currentDate.setText(Date.getDate());
 //        ForecastIO forecast = new ForecastIO();
-//        forecast.getCurrentWeather(currentWeather, highlowTemp, feelslikeTemp, todayForecast);
+//        forecast.getCurrentWeather(configSettings.getLatitude(), configSettings.getLongitude(), configSettings.getForecastUnits(), currentWeather, highlowTemp, feelslikeTemp, todayForecast);
+//        MapsBackground map = new MapsBackground();
+//        map.getMapBackground(googlemapsAPIKEY, configSettings.getLatitude(), configSettings.getLongitude(), googleMap);
+//        WeatherUndergroundRadar radar = new WeatherUndergroundRadar();
+//        radar.getWeatherRadar(weatherundergroundAPIKEY, configSettings.getLatitude(), configSettings.getLongitude(), weatherRadar);
 
         timerTask = new TimerTask() {
             @Override
@@ -92,8 +102,10 @@ public class MirrorActivity extends AppCompatActivity {
                         currentDate.setText(Date.getDate());
                         ForecastIO forecast = new ForecastIO();
                         forecast.getCurrentWeather(configSettings.getLatitude(), configSettings.getLongitude(), configSettings.getForecastUnits(), currentWeather, highlowTemp, feelslikeTemp, todayForecast);
-                        //WeatherRadar radar = new WeatherRadar();
-                        //radar.getWeatherRadar(weatherRadar);
+                        MapsBackground map = new MapsBackground();
+                        map.getMapBackground(googlemapsAPIKEY, configSettings.getLatitude(), configSettings.getLongitude(), googleMap);
+                        WeatherUndergroundRadar radar = new WeatherUndergroundRadar();
+                        radar.getWeatherRadar(weatherundergroundAPIKEY, configSettings.getLatitude(), configSettings.getLongitude(), weatherRadar);
                     }
                 });
 

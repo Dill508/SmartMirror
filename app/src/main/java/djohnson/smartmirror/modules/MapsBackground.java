@@ -9,15 +9,16 @@ import android.widget.ImageView;
 import java.io.InputStream;
 
 /**
- * Created by Dillon on 5/17/2016.
+ * Created by Dillon on 5/21/2016.
  *
  */
-public class WeatherRadar {
+public class MapsBackground {
 
-    public void getWeatherRadar(ImageView weatherRadar) {
+    public void getMapBackground(String API_KEY, String lat, String lon, final ImageView radarImage) {
 
-        new DownloadImageTask(weatherRadar)
-                .execute("http://maps.aerisapi.com/cRwmrNPqZ5AaW2bOC2S5h_eoDHeXKbIVHvqXGX03BldMjXq3IYtgPODY5oRYQo/flat,radar,admin/600x400/41.533,-90.655,8/current.jpg");
+        new DownloadImageTask(radarImage)
+                .execute("https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=8&scale=2&size=600x500&maptype=roadmap&layer=t\n" +
+                        "&key=" + API_KEY);
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -45,5 +46,4 @@ public class WeatherRadar {
             bmImage.setImageBitmap(result);
         }
     }
-
 }

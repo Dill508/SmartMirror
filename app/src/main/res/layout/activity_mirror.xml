@@ -42,11 +42,40 @@
         android:textSize="@dimen/highlowtemp_text_size"
         tools:text="Feels Like: 75°"/>
 
-    <ImageView
-        android:id="@+id/weather_radar"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"/>
+        android:layout_gravity="end"
+        >
+        <ImageView
+            android:id="@+id/map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:scaleType="fitCenter"
+            android:maxWidth="580dp"
+            android:maxHeight="380dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="end"
+            />
+        <ImageView
+            android:id="@+id/weather_radar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:maxWidth="600dp"
+            android:maxHeight="500dp"
+            android:paddingTop="5dp"
+            android:layout_gravity="end"/>
+    </FrameLayout>
+
+    <!--<ImageView-->
+        <!--android:id="@+id/weather_radar"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingTop="5dp"/>-->
 
     <TextView
         android:id="@+id/highlowtemp_text"

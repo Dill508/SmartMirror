@@ -22,9 +22,6 @@ public class ForecastIO {
     public void getCurrentWeather(String lat, String lon, String units, final TextView currentWeather, final TextView highlowtemp, final TextView feelsliketemp, final TextView todaysforecast) {
         RequestBuilder weather = new RequestBuilder();
         Request request = new Request();
-//        request.setLat("41.533");
-//        request.setLng("-90.655");
-//        request.setUnits(Request.Units.US);
         request.setLat(lat);
         request.setLng(lon);
         if (units.equals("SI")) {
@@ -32,10 +29,7 @@ public class ForecastIO {
         } else {
             request.setUnits(Request.Units.US);
         }
-        //request.setUnits(Request.Units.US);
         request.setLanguage(Request.Language.ENGLISH);
-        //request.addExcludeBlock(Request.Block.CURRENTLY);
-        //request.removeExcludeBlock(Request.Block.CURRENTLY);
 
         weather.getWeather(request, new Callback<WeatherResponse>() {
             @Override
