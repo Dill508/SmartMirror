@@ -54,8 +54,6 @@ public class ForecastIO {
 
                 //setting today's forecast
                 String daysforecast = weatherResponse.getHourly().getSummary();
-                //String daysforecast = weatherResponse.getDaily().getData().get(0).getSummary();
-                //String displayeddaysforecast = daysforecast;
                 todaysforecast.setText(daysforecast);
             }
             @Override

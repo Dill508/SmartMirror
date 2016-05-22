@@ -17,7 +17,7 @@ public class MapsBackground {
     public void getMapBackground(String API_KEY, String lat, String lon, final ImageView radarImage) {
 
         new DownloadImageTask(radarImage)
-                .execute("https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=8&scale=2&size=600x500&maptype=roadmap&layer=t\n" +
+                .execute("https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=8&scale=2&size=600x500&maptype=roadmap\n" +
                         "&key=" + API_KEY);
     }
 
