@@ -17,4 +17,5 @@ My first Android app that uses a tablet as a smart mirror. (Inspired by HomeMirr
 </resources>
 
 Example of App's Main Screen
+
 ![Alt text](https://github.com/Dill508/SmartMirror/blob/master/2016-07-11_21-15-13.png "App Main Screen")
